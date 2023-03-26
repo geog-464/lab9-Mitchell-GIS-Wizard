@@ -18,7 +18,31 @@
     <body>
         <!--put your initial page content here-->
 		<div id="div1">
+		<b><u>
+		<p>Question 2:</p>
+		</b></u>
+		<p>First it is is checking if the feature geoemotery is equal to a point, if so it will apply the styling we set inside the if loop, we can set the colour,opacaity,size etc for each point.We can edit this to any style we set, example I have made my circles red from white by editting styles.fillcolor. </p>
+		<b><u>
+		<p>Question 4:</p>
+		</b></u>
+		<p>Feature is the attribute data from the stations such as ZipCode we are calling on above. Layer is calling on and printing in the console the style infromaion we specificed such as radius and the lat and long as well as if the object on the map is filled. The result printed in the console is latlng,if the object is filled, and radius on the object on the map. </p>
+		<b><u>
+		<p>Question 5:</p>
+		</b></u>
+		<p> layer.options.fill is just filling our points on the map, this is just a styling feature and returns true because we filled our point. The layer.getLatLng() retrieves the lat and long that we could then go onto further use unlike the layer.options.fill. </p>
+		<b><u>
+		<p>Question 6:</p>
+		</b></u>
+		<p> We changed the radius to 80 which made the points extremely large and removed the colour filling from our points. All we have done is further styled our points on the maps. </p>
+		
 		</div>
+		<select class="li-nav" name="mapdropdown" id="mapdropdown" onChange="loadMap(this.value);">
+			<option value="map0" selected="selected" disabled>Load a map</option>
+			<option value='mapa'>Map A</option>
+			<option value='mapb'>Map B</option>
+			</select>
+
+			
 		<div id="mapdiv">
 			
 		</div>

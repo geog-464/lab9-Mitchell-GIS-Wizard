@@ -1,9 +1,9 @@
 body {
-	background-color: white
+	background-color: green;
 }
 
 #div1 {
-    height: 200px;
+    height: auto;
 	width: 80%;
 	padding: 10px;
     margin: 0 auto;
