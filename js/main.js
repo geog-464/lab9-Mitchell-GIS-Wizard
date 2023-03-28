@@ -17,13 +17,41 @@ let baseLayers = {
 	"Topographic Map": OpenTopoMap
 };
 
-
 function initialize(){
     loadMap();
 };
-function fetchData(){
+function loadMap(mapid){
+	//now reassign the map variable by actually making it a useful object, this will load your leaflet map
+	try {
+	myMap.remove()
+} catch(e) {
+	console.log(e)
+	console.log("no map to delete")
+} finally {
+	//put your map loading code in here
+}
+		if (mapid == 'mapa'){
+		myMap = L.map('mapdiv', {
+			center: [45.50, -73.58]
+			,zoom: 3
+			,maxZoom: 18
+			,minZoom: 3
+			,layers: OpenTopoMap
+	});
+		fetchData("https://raw.githubusercontent.com/geog-464/geog-464.github.io/main/Amtrak_Stations.geojson")
+		} else if (mapid == 'mapb'){
+		myMap = L.map('mapdiv', {
+			center: [45.50, -73.58]
+			,zoom: 3
+			,maxZoom: 18
+			,minZoom: 3
+			,layers: CartoDB_Positron
+	});
+		fetchData("https://raw.githubusercontent.com/geog-464/geog-464.github.io/main/megacities.geojson")	
+		}
+function fetchData(e){
     //load the data
-    fetch("https://raw.githubusercontent.com/geog-464/geog-464.github.io/main/Amtrak_Stations.geojson")
+    fetch(e)
         .then(function(response){
             return response.json();
         })
@@ -31,24 +59,11 @@ function fetchData(){
             //create a Leaflet GeoJSON layer using the fetched json and add it to the map object
             L.geoJson(json,{style: styleAll, pointToLayer: generateCircles, onEachFeature: addPopups}).addTo(myMap)
         })
-};
-function loadMap(){
-	//now reassign the map variable by actually making it a useful object, this will load your leaflet map
-		
-		fetchData()
-
-	myMap = L.map('mapdiv', {
-		center: [45.50, -73.58]
-		,zoom: 3
-		,maxZoom: 18
-		,minZoom: 3
-		,layers: CartoDB_Positron
-	});
 
 	//declare basemap selector widget
-	let lcontrol = L.control.layers(baseLayers);
+//	let lcontrol = L.control.layers(baseLayers);
 	//add the widget to the map
-	lcontrol.addTo(myMap);
+//	lcontrol.addTo(myMap);
 };
 function generateCircles(feature, latlng) {
 	return L.circleMarker(latlng);
@@ -71,9 +86,6 @@ function styleAll(feature, latlng) {
 	}
 		return styles;
 }
-function addPopups(feature, layer){
-		layer.bindPopup();
-
 	}
 
 
