@@ -29,7 +29,6 @@ function loadMap(mapid){
 	console.log("no map to delete")
 } finally {
 	//put your map loading code in here
-}
 		if (mapid == 'mapa'){
 		myMap = L.map('mapdiv', {
 			center: [45.50, -73.58]
@@ -46,9 +45,10 @@ function loadMap(mapid){
 			,maxZoom: 18
 			,minZoom: 3
 			,layers: CartoDB_Positron
-	});
+	})
 		fetchData("https://raw.githubusercontent.com/geog-464/geog-464.github.io/main/megacities.geojson")	
-		}
+	}}
+}
 function fetchData(e){
     //load the data
     fetch(e)
@@ -60,10 +60,9 @@ function fetchData(e){
             L.geoJson(json,{style: styleAll, pointToLayer: generateCircles, onEachFeature: addPopups}).addTo(myMap)
         })
 
-	//declare basemap selector widget
-//	let lcontrol = L.control.layers(baseLayers);
-	//add the widget to the map
-//	lcontrol.addTo(myMap);
+function addPopups(feature, layer){
+
+}
 };
 function generateCircles(feature, latlng) {
 	return L.circleMarker(latlng);
@@ -73,7 +72,7 @@ function styleAll(feature, latlng) {
 	var styles = {dashArray:null, dashOffset:null, lineJoin:null, lineCap:null, stroke:false, color:'#000', opacity:1, weight:1, fillColor:null, fillOpacity:0 };
 
 	if (feature.geometry.type == "Point") {
-		styles.fillColor = '#800'
+		styles.fillColor = '#800080'
 		,styles.fillOpacity = 0.5
 		,styles.stroke=true
 		,styles.radius=6
@@ -85,8 +84,8 @@ function styleAll(feature, latlng) {
 		,styles.radius=6
 	}
 		return styles;
+
 }
-	}
 
 
 
